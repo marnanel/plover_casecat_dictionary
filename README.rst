@@ -14,8 +14,8 @@ The files begin with a 640-byte header, which begins with the magic number
 One or more records follow the header. Each record gives a
 single translation from steno to text.
 
-The record header is 21 bytes. header[19] contains the number
-of strokes, and header[20] gives the number of letters in
+The record header is 21 bytes. header[18] contains the number
+of strokes, and header[19] gives the number of letters in
 the text. Each is an unsigned byte. The purpose of all other
 fields in the record header is unknown at present.
 
