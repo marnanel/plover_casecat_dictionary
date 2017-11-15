@@ -1,13 +1,9 @@
-# -*- coding: utf-8 -*-
-# Copyright (c) 2013 Hesky Fisher
-# See LICENSE.txt for details.
-
 """Unit tests for CaseCat."""
 
 import os
 import unittest
 
-from plover.dictionary.casecat_dict import CaseCatDictionary
+from plover_casecat_dictionary import CaseCatDictionary
 
 class CaseCatDictionaryTestCase(unittest.TestCase):
 
@@ -32,5 +28,5 @@ class CaseCatDictionaryTestCase(unittest.TestCase):
 
                 ):
 
-            d = CaseCatDictionary.load(os.path.join('test', filename))
+            d = CaseCatDictionary.load(os.path.join('tests', filename))
             self.assertEqual(dict(d.items()), expected)

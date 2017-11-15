@@ -1,11 +1,17 @@
-Add support for reading Stenograph CaseCATalyst saved dictionaries to Plover.
+Plover CaseCAT Dictionary
+=========================
 
-CaseCATalyst dictionaries have the extension ".sgdct". There is
-often a corresponding ".sgxml" file, but this contains no dictionary
+Add support for reading Stenograph CaseCATalyst dictionaries to Plover.
+
+Technical Detail
+----------------
+
+CaseCATalyst dictionaries have the extension ``.sgdct``. There is
+often a corresponding ``.sgxml`` file, but this contains no dictionary
 data.
 
 Much of the detail of the file format remains unknown. Contributions
-and corrections are very welcome. Thanks are due to Sooty,
+and corrections are very welcome. Thanks are due to @Sooty,
 who provided example files for dissection.
 
 The files begin with a 640-byte header, which begins with the magic number
