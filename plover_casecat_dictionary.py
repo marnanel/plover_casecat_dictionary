@@ -1,6 +1,6 @@
-
 from plover.steno_dictionary import StenoDictionary
 from plover.steno import normalize_steno
+from plover import resource
 from struct import unpack
 import re
 
@@ -41,7 +41,19 @@ def _tidy_translation(t):
 
 class CaseCatDictionary(StenoDictionary):
 
-    def _parse(self, filename):
+    def __init__(self):
+        super(CaseCatDictionary, self).__init__()
+        self._contents = None
+        self._reverse_contents = None
+        self.readonly = True
+
+    def getattr(self, key, default=None):
+        return self.__getattr__(key, default)
+
+    def _load(self, filename):
+        self._contents = {}
+        self._reverse_contents = {}
+
         with open(filename, 'rb') as f:
 
             f.seek(0x280)
@@ -75,12 +87,26 @@ class CaseCatDictionary(StenoDictionary):
 
                 translation = _tidy_translation(f.read(letter_count))
 
-                yield (tuple(stroke), translation)
+                key = '/'.join(stroke)
+
+                self._contents[key] = translation
+                self._reverse_contents[translation] = key
 
                 padding_space = f.tell()%4
-
                 if padding_space != 0:
                     f.read(4-padding_space)
 
-    def _load(self, filename):
-        self.update(self._parse(filename))
+    def __setitem__(self, key, value):
+        raise NotImplementedError()
+
+    def __delitem__(self, key):
+        raise NotImplementedError()
+
+    def __getitem__(self, key):
+        return self._contents.__getitem__(key)
+
+    def get(self, item, key, fallback=None):
+        return self._contents.get(item, key, fallback)
+
+    def reverse_lookup(self, value):
+        return self._reverse_contents[value]
