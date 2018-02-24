@@ -41,6 +41,9 @@ def _tidy_translation(t):
 
 class CaseCatDictionary(StenoDictionary):
 
+
+    readonly = True
+
     def __init__(self):
         super(CaseCatDictionary, self).__init__()
         self._contents = None
