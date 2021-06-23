@@ -1,5 +1,6 @@
 include *.rst
 include *.txt
+include pyproject.toml
 recursive-include test *.py
 recursive-include test *.sgdct
 include tox.ini
