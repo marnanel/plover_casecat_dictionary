@@ -44,7 +44,7 @@ class CaseCatDictionary(StenoDictionary):
     readonly = True
 
     def __init__(self):
-        super(CaseCatDictionary, self).__init__()
+        super().__init__()
         self._contents = None
         self._reverse_contents = None
         self.readonly = True
